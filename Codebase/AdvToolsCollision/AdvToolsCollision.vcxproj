@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{c22dd988-1de9-42ab-a421-e9794c3d9dec}</ProjectGuid>
+    <RootNamespace>AdvToolsCollision</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AdvToolsScene.cpp" />
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mge\Assignment2.cpp" />
+    <ClCompile Include="mge\Assignment3.cpp" />
+    <ClCompile Include="mge\Assignment4.cpp" />
+    <ClCompile Include="mge\behaviours\AbstractBehaviour.cpp" />
+    <ClCompile Include="mge\behaviours\FollowBehaviour.cpp" />
+    <ClCompile Include="mge\behaviours\KeysBehaviour.cpp" />
+    <ClCompile Include="mge\behaviours\RotatingBehaviour.cpp" />
+    <ClCompile Include="mge\core\AbstractGame.cpp" />
+    <ClCompile Include="mge\core\Camera.cpp" />
+    <ClCompile Include="mge\core\GameObject.cpp" />
+    <ClCompile Include="mge\core\Light.cpp" />
+    <ClCompile Include="mge\core\Mesh.cpp" />
+    <ClCompile Include="mge\core\Renderer.cpp" />
+    <ClCompile Include="mge\core\ShaderProgram.cpp" />
+    <ClCompile Include="mge\core\Texture.cpp" />
+    <ClCompile Include="mge\core\World.cpp" />
+    <ClCompile Include="mge\materials\AbstractMaterial.cpp" />
+    <ClCompile Include="mge\materials\ColorMaterial.cpp" />
+    <ClCompile Include="mge\materials\LightMaterial.cpp" />
+    <ClCompile Include="mge\materials\TextureMaterial.cpp" />
+    <ClCompile Include="mge\MGEDemo.cpp" />
+    <ClCompile Include="mge\util\DebugHud.cpp" />
+    <ClCompile Include="MoveBehaviour.cpp" />
+    <ClCompile Include="Space.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AdvToolsScene.hpp" />
+    <ClInclude Include="Collider.hpp" />
+    <ClInclude Include="CollisionManager.hpp" />
+    <ClInclude Include="mge\Assignment2.hpp" />
+    <ClInclude Include="mge\Assignment3.hpp" />
+    <ClInclude Include="mge\Assignment4.hpp" />
+    <ClInclude Include="mge\behaviours\AbstractBehaviour.hpp" />
+    <ClInclude Include="mge\behaviours\FollowBehaviour.hpp" />
+    <ClInclude Include="mge\behaviours\KeysBehaviour.hpp" />
+    <ClInclude Include="mge\behaviours\RotatingBehaviour.hpp" />
+    <ClInclude Include="mge\config.hpp" />
+    <ClInclude Include="mge\core\AbstractGame.hpp" />
+    <ClInclude Include="mge\core\Camera.hpp" />
+    <ClInclude Include="mge\core\GameObject.hpp" />
+    <ClInclude Include="mge\core\Light.hpp" />
+    <ClInclude Include="mge\core\Mesh.hpp" />
+    <ClInclude Include="mge\core\Renderer.hpp" />
+    <ClInclude Include="mge\core\ShaderProgram.hpp" />
+    <ClInclude Include="mge\core\Texture.hpp" />
+    <ClInclude Include="mge\core\World.hpp" />
+    <ClInclude Include="mge\materials\AbstractMaterial.hpp" />
+    <ClInclude Include="mge\materials\ColorMaterial.hpp" />
+    <ClInclude Include="mge\materials\LightMaterial.hpp" />
+    <ClInclude Include="mge\materials\TextureMaterial.hpp" />
+    <ClInclude Include="mge\MGEDemo.hpp" />
+    <ClInclude Include="mge\util\DebugHud.hpp" />
+    <ClInclude Include="MoveBehaviour.hpp" />
+    <ClInclude Include="Space.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mge\models\Chaynik.mtl" />
+    <None Include="mge\shaders\color.fs" />
+    <None Include="mge\shaders\color.vert" />
+    <None Include="mge\shaders\light.fs" />
+    <None Include="mge\shaders\light.vert" />
+    <None Include="mge\shaders\texture.fs" />
+    <None Include="mge\shaders\texture.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="mge\fonts\arial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="mge\models\Chaynik.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\cone_flat.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\cone_smooth.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\cube_flat.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\cube_smooth.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\cylinder_flat.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\cylinder_smooth.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\plane.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\plane20x20_2048tris_aligned_uvs.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\plane20x20_2tris_aligned_uvs.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\sphere_flat.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\sphere_smooth.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\suzanna_flat.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\suzanna_smooth.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\teapot_flat.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\teapot_smooth.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="mge\textures\bricks.jpg" />
+    <Image Include="mge\textures\Chaynik.png" />
+    <Image Include="mge\textures\diffuse1.jpg" />
+    <Image Include="mge\textures\diffuse2.jpg" />
+    <Image Include="mge\textures\diffuse3.jpg" />
+    <Image Include="mge\textures\diffuse4.jpg" />
+    <Image Include="mge\textures\heightmap.png" />
+    <Image Include="mge\textures\land.jpg" />
+    <Image Include="mge\textures\runicfloor.png" />
+    <Image Include="mge\textures\splatmap.png" />
+    <Image Include="mge\textures\water.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="mge\models\disk.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="mge\models\polygon.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

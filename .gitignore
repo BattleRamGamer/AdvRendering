@@ -96,6 +96,8 @@ http-client.private.env.json
 **/[Bb]uild/
 **/[Bb]uilds/
 **/[Ll]ogs/
+**/[Dd]ebug/
+**/x64/
 **/[Uu]ser[Ss]ettings/
 *.log
 
