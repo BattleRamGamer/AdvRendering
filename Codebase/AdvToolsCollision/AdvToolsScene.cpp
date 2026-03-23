@@ -23,6 +23,9 @@
 #include "MoveBehaviour.hpp"
 #include "Collider.hpp"
 #include "CollisionManager.hpp"
+#include "DataTracker.hpp"
+
+#include <fstream>
 
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
 AdvToolsScene::AdvToolsScene() :AbstractGame(), _hud(0), _collisionManager(0)
@@ -43,6 +46,10 @@ void AdvToolsScene::initialize() {
 //build the game _world
 void AdvToolsScene::_initializeScene()
 {
+
+
+
+
     _collisionManager = new CollisionManager();
     //MESHES
 
@@ -50,7 +57,7 @@ void AdvToolsScene::_initializeScene()
     //each mesh only has to be loaded once, but can be used multiple times:
     //F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
     Mesh* planeMeshDefault = Mesh::load(config::MGE_MODEL_PATH + "plane.obj");
-    Mesh* cubeMeshF = Mesh::load(config::MGE_MODEL_PATH + "cube_flat.obj");
+    //Mesh* cubeMeshF = Mesh::load(config::MGE_MODEL_PATH + "cube_flat.obj");
     //Mesh* sphereMeshS = Mesh::load(config::MGE_MODEL_PATH + "sphere_smooth.obj");
     //Mesh* teapotMesh = Mesh::load(config::MGE_MODEL_PATH + "Chaynik.obj");
     Mesh* discMesh = Mesh::load(config::MGE_MODEL_PATH + "disk.obj");
@@ -163,6 +170,7 @@ void AdvToolsScene::_initializeScene()
 
     /**/
 
+    DataTracker dTracker = DataTracker();
     //camera->setBehaviour(new FollowBehaviour(light, 2));
 
 }

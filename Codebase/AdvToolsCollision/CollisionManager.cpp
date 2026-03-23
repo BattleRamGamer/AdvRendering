@@ -25,10 +25,10 @@ int CollisionManager::checkCollisions() {
 	int total = 0;
 	testAmount = 0;
 
-	if (config::COL_DETECTION_TYPE == 0) {
+	if (!config::USE_IGNOREHISTORY) {
 		total = checkCollisionsUnoptimized();
 	}
-	else if (config::COL_DETECTION_TYPE == 1) {
+	else {
 		total = checkCollisionsIgnoreHistory();
 	}
 

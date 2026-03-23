@@ -1,10 +1,10 @@
 #include <iostream>
 
 #include "mge/core/AbstractGame.hpp"
-#include "mge/MGEDemo.hpp"
-#include "mge/Assignment2.hpp"
-#include "mge/Assignment3.hpp"
-#include "mge/Assignment4.hpp"
+//#include "mge/MGEDemo.hpp"
+//#include "mge/Assignment2.hpp"
+//#include "mge/Assignment3.hpp"
+//#include "mge/Assignment4.hpp"
 #include "AdvToolsScene.hpp"
 
 /**

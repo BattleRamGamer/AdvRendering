@@ -130,6 +130,7 @@
     <ClCompile Include="AdvToolsScene.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="DataTracker.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mge\Assignment2.cpp" />
     <ClCompile Include="mge\Assignment3.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="AdvToolsScene.hpp" />
     <ClInclude Include="Collider.hpp" />
     <ClInclude Include="CollisionManager.hpp" />
+    <ClInclude Include="DataTracker.hpp" />
     <ClInclude Include="mge\Assignment2.hpp" />
     <ClInclude Include="mge\Assignment3.hpp" />
     <ClInclude Include="mge\Assignment4.hpp" />
