@@ -7,8 +7,8 @@ namespace config {
     const std::string MGE_FONT_PATH ("./mge/fonts/");
 
 
-    const int CIRCLE_COLLIDER_AMOUNT(20);
-    const int AABB_COLLIDER_AMOUNT(10);
+    const int CIRCLE_COLLIDER_AMOUNT(200);
+    const int AABB_COLLIDER_AMOUNT(100);
     const float BOUNDARY_POSITION(20.0f);
 
     // Ignore collision checks that already happened

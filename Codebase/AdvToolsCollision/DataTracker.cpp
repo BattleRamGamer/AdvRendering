@@ -21,40 +21,37 @@ DataTracker::DataTracker() {
     // set seed
     //srand(0);
     
-    seed = 0;
+    //seed = 0;
     printf("%s;%d",_fileName.c_str(), rand()%15);
 }
 
 DataTracker::~DataTracker() {
-
+    _data.clear();
 }
 
-void SetData() {
-
-}
-
-void DataTracker::StoreFrameData() {
-
+void DataTracker::StoreFrameData(float frameTime, int pCollisions, int pChecksPerformed) {
+    _data.push_back(std::to_string(frameTime) + "," + std::to_string(pChecksPerformed) + "," + std::to_string(pCollisions));
 }
 
 void DataTracker::WriteDataToFile() {
     std::ofstream myfile;
 
-    // Writing to fileName
-    myfile.open("../../Raw results/" + _fileName, std::ios::app);
+    // Writing to fileName. Use std::ios::app to append the new results
+    myfile.open("../../Raw results/" + _fileName + ".csv", std::ios::out);
 
-    myfile << "Order";
+    myfile << "Frame time,Checks performed,Collisions happening\n";
 
     for (int i = 0; i < _data.size(); i++) {
 
-        // Add to new row: Constant data, frame data and make the next one look at the next line
-        myfile << _constantData + _data[i] + "\n ";
+        // Add to new row: frame data and make the next one look at the next line
+        myfile << _data[i] + "\n ";
     }
-
+    /**
     myfile << "This is the first cell in the first column.\n";
     myfile << "a,b,c,\n";
     myfile << "c,s,v,\n";
     myfile << "1,2,3.456\n";
     myfile << "semi;colon";
+    /**/
     myfile.close();
 }

@@ -13,14 +13,14 @@ public:
 	virtual ~DataTracker();
 
 	// Should be called at the end of every frame
-	void StoreFrameData();
+	void StoreFrameData(float frameTime, int pCollisions, int pChecksPerformed);
 
 	// When the test is finished, write the data to the .csv file
 	void WriteDataToFile();
 
 protected:
 
-	int seed;
+	//int seed;
 
 
 	// Name of the .csv file to write to

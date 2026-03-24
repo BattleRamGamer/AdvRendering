@@ -5,6 +5,7 @@
 
 #include "mge/core/AbstractGame.hpp"
 #include "CollisionManager.hpp"
+#include "DataTracker.hpp"
 
 class DebugHud;
 
@@ -26,13 +27,17 @@ class AdvToolsScene : public AbstractGame
 		//override so we can construct the actual scene
 		virtual void _initializeScene();
 
+		virtual void _update(float pStep);
+
 		//override render to render the hud as well.
 		virtual void _render();
 
 	private:
 		DebugHud* _hud;                   //hud display
 		CollisionManager* _collisionManager;
+		DataTracker* _dataTracker;
 
+		sf::Clock clockTimer;
 		void _updateHud();
 
 		AdvToolsScene(const AdvToolsScene&);

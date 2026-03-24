@@ -28,7 +28,7 @@
 #include <fstream>
 
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
-AdvToolsScene::AdvToolsScene() :AbstractGame(), _hud(0), _collisionManager(0)
+AdvToolsScene::AdvToolsScene() :AbstractGame(), _hud(0), _collisionManager(0), _dataTracker(0)
 {
 }
 
@@ -51,27 +51,19 @@ void AdvToolsScene::_initializeScene()
 
 
     _collisionManager = new CollisionManager();
+    _dataTracker = new DataTracker();
     //MESHES
 
     //load a bunch of meshes we will be using throughout this demo
     //each mesh only has to be loaded once, but can be used multiple times:
     //F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
     Mesh* planeMeshDefault = Mesh::load(config::MGE_MODEL_PATH + "plane.obj");
-    //Mesh* cubeMeshF = Mesh::load(config::MGE_MODEL_PATH + "cube_flat.obj");
-    //Mesh* sphereMeshS = Mesh::load(config::MGE_MODEL_PATH + "sphere_smooth.obj");
-    //Mesh* teapotMesh = Mesh::load(config::MGE_MODEL_PATH + "Chaynik.obj");
     Mesh* discMesh = Mesh::load(config::MGE_MODEL_PATH + "disk.obj");
-    //Mesh* polygonMesh = Mesh::load(config::MGE_MODEL_PATH + "polygon.obj");
+
 
     //MATERIALS
 
-    //create some materials to display the cube, the plane and the light
-    //AbstractMaterial* lightMaterial = new ColorMaterial(glm::vec3(1, 1, 0));
-    //AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "runicfloor.png"));
-    //AbstractMaterial* brickMaterial = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "bricks.jpg"));
     AbstractMaterial* colourMaterial = new ColorMaterial(glm::vec3(1, 0, 1));
-    //AbstractMaterial* teapotMaterial = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "Chaynik.png"));
-    //AbstractMaterial* splatmap = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "splatmap.png"));
 
     //SCENE SETUP
 
@@ -170,9 +162,13 @@ void AdvToolsScene::_initializeScene()
 
     /**/
 
-    DataTracker dTracker = DataTracker();
+    //DataTracker dTracker = DataTracker();
     //camera->setBehaviour(new FollowBehaviour(light, 2));
 
+}
+
+void AdvToolsScene::_update(float pStep) {
+    AbstractGame::_update(pStep);
 }
 
 void AdvToolsScene::_render() {
@@ -182,9 +178,15 @@ void AdvToolsScene::_render() {
 
 void AdvToolsScene::_updateHud() {
     std::string debugInfo = "";
+
+    int colCount = _collisionManager->checkCollisions();
+    int testCount = _collisionManager->getTestAmount();
     debugInfo += std::string("FPS:") + std::to_string((int)_fps) + "\n";
-    debugInfo += std::string("Number of collisions: ") + std::to_string(_collisionManager->checkCollisions()) + "\n";
-    debugInfo += std::string("Number of tests: ") + std::to_string(_collisionManager->getTestAmount());
+    debugInfo += std::string("Number of collisions: ") + std::to_string(colCount) + "\n";
+    debugInfo += std::string("Number of tests: ") + std::to_string(testCount);
+
+    //printf("%f\n", clockTimer.restart().asSeconds());
+    _dataTracker->StoreFrameData(clockTimer.restart().asSeconds(), colCount, testCount);
 
     _hud->setDebugInfo(debugInfo);
     _hud->draw();
@@ -193,4 +195,5 @@ void AdvToolsScene::_updateHud() {
 AdvToolsScene::~AdvToolsScene()
 {
     //dtor
+    _dataTracker->WriteDataToFile();
 }
