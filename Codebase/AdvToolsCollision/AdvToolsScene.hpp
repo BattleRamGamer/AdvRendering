@@ -6,6 +6,7 @@
 #include "mge/core/AbstractGame.hpp"
 #include "CollisionManager.hpp"
 #include "DataTracker.hpp"
+#include <chrono>
 
 class DebugHud;
 
@@ -38,7 +39,12 @@ class AdvToolsScene : public AbstractGame
 		DataTracker* _dataTracker;
 
 		sf::Clock clockTimer;
+		int _frameCount;
+		std::chrono::high_resolution_clock::time_point _startTime = std::chrono::high_resolution_clock::now();
+		bool _timerFinished;
+
 		void _updateHud();
+		void _checkTimer();
 
 		AdvToolsScene(const AdvToolsScene&);
 		AdvToolsScene& operator=(const AdvToolsScene&);

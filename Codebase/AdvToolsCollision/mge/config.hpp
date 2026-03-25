@@ -6,6 +6,12 @@ namespace config {
     const std::string MGE_SHADER_PATH ("./mge/shaders/");
     const std::string MGE_FONT_PATH ("./mge/fonts/");
 
+    // Time in seconds to test for
+    const int TEST_TIME(10);
+    // Number of frames to test
+    const int TEST_FRAME_COUNT(360);
+    // Test for a set amount of: True = Time, False = Frames
+    const bool USE_TEST_METHOD_TIME(true);
 
     const int CIRCLE_COLLIDER_AMOUNT(200);
     const int AABB_COLLIDER_AMOUNT(100);

@@ -109,62 +109,6 @@ void AdvToolsScene::_initializeScene()
         _collisionManager->addCollider(collider);
     }
 
-    /**
-    //add the floor
-    GameObject* disc = new GameObject("disc", glm::vec3(0, 0, 0));
-    disc->scale(glm::vec3(1, 1, 1));
-    disc->setMesh(discMesh);
-    disc->setMaterial(colourMaterial);
-    disc->setBehaviour(new MoveBehaviour(.1f, 90));
-    _world->add(disc);
-
-    Collider* collider = new Collider(1);
-    collider->setParent(disc);
-    _collisionManager->addCollider(collider);
-
-
-
-    GameObject* polygon = new GameObject("polygon", glm::vec3(0, 0, 0));
-    polygon->scale(glm::vec3(1, 1, 1));
-    polygon->setMesh(planeMeshDefault);
-    polygon->setMaterial(lightMaterial);
-    _world->add(polygon);
-
-    Collider* collider2 = new Collider(1);
-    collider2->setParent(polygon);
-    _collisionManager->addCollider(collider2);
-    /**/
-    
-    /**
-    //add a spinning sphere
-    GameObject* sphere = new GameObject("sphere", glm::vec3(0, 0, 0));
-    sphere->scale(glm::vec3(2.5, 2.5, 2.5));
-    sphere->setMesh(sphereMeshS);
-    sphere->setMaterial(runicStoneMaterial);
-    sphere->setBehaviour(new RotatingBehaviour());
-    _world->add(sphere);
-    /**/
-
-    /**
-    Light* light = new Light("light", glm::vec3(0, 3, 0));
-    light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
-    light->setMesh(cubeMeshF);
-    light->setMaterial(lightMaterial);
-    light->setBehaviour(new KeysBehaviour(25));
-    _world->add(light);
-
-
-    GameObject* childSphere = new GameObject("childSphere", glm::vec3(0, -4, 0));
-    childSphere->scale(glm::vec3(2.2f, 2.2f, 2.2f));
-    childSphere->setMesh(sphereMeshS);
-    childSphere->setMaterial(colourMaterial);
-    childSphere->setParent(light);
-
-    /**/
-
-    //DataTracker dTracker = DataTracker();
-    //camera->setBehaviour(new FollowBehaviour(light, 2));
-
 }
 
 void AdvToolsScene::_update(float pStep) {
@@ -186,14 +130,63 @@ void AdvToolsScene::_updateHud() {
     debugInfo += std::string("Number of tests: ") + std::to_string(testCount);
 
     //printf("%f\n", clockTimer.restart().asSeconds());
-    _dataTracker->StoreFrameData(clockTimer.restart().asSeconds(), colCount, testCount);
+
+    _checkTimer();
+
+    if (_timerFinished) {
+        debugInfo += "\nTest is done";
+    }
+    else {
+
+        const auto t2 = std::chrono::high_resolution_clock::now();
+
+        const std::chrono::duration<double, std::ratio<1>> fp_ms = t2 - _startTime;
+
+        _dataTracker->StoreFrameData(
+            clockTimer.restart().asSeconds(), 
+            fp_ms.count(),
+            colCount, 
+            testCount);
+    }
+    
 
     _hud->setDebugInfo(debugInfo);
     _hud->draw();
 }
 
+void AdvToolsScene::_checkTimer() {
+    
+    if (_timerFinished) return;
+
+    if (config::USE_TEST_METHOD_TIME) {
+
+        const auto t2 = std::chrono::high_resolution_clock::now();
+
+        // integral duration: requires duration_cast
+        const auto int_ms = std::chrono::duration_cast<std::chrono::seconds>(t2 - _startTime);
+
+        int seconds = int_ms.count();
+
+        printf("%i\n", seconds);
+
+        if (seconds >= config::TEST_TIME) {
+            _timerFinished = true;
+            _dataTracker->WriteDataToFile();
+            _window->close();
+        }
+    }
+    else {
+        _frameCount++;
+        if (_frameCount >= config::TEST_FRAME_COUNT) {
+            _timerFinished = true;
+            _dataTracker->WriteDataToFile();
+            _window->close();
+        }
+    }
+
+}
+
 AdvToolsScene::~AdvToolsScene()
 {
     //dtor
-    _dataTracker->WriteDataToFile();
 }

@@ -14,7 +14,8 @@ DataTracker::DataTracker() {
         + "-" + std::to_string(config::CIRCLE_COLLIDER_AMOUNT)
         + "-" + std::to_string(config::USE_IGNOREHISTORY)
         + "-" + std::to_string(config::USE_QUADTREE)
-        + "-" + std::to_string(config::USE_DOUBLEDISPATCH);
+        + "-" + std::to_string(config::USE_DOUBLEDISPATCH)
+        + "-Timetype" + std::to_string(config::USE_TEST_METHOD_TIME);
 
     //_constantData = std::string config::AABB_COLLIDER_AMOUNT;
     // 
@@ -29,8 +30,12 @@ DataTracker::~DataTracker() {
     _data.clear();
 }
 
-void DataTracker::StoreFrameData(float frameTime, int pCollisions, int pChecksPerformed) {
-    _data.push_back(std::to_string(frameTime) + "," + std::to_string(pChecksPerformed) + "," + std::to_string(pCollisions));
+void DataTracker::StoreFrameData(float frameTime, float elapsedTime, int pCollisions, int pChecksPerformed) {
+    _data.push_back(
+        std::to_string(frameTime) + "," + 
+        std::to_string(elapsedTime) + "," +
+        std::to_string(pChecksPerformed) + "," + 
+        std::to_string(pCollisions));
 }
 
 void DataTracker::WriteDataToFile() {
@@ -39,7 +44,7 @@ void DataTracker::WriteDataToFile() {
     // Writing to fileName. Use std::ios::app to append the new results
     myfile.open("../../Raw results/" + _fileName + ".csv", std::ios::out);
 
-    myfile << "Frame time,Checks performed,Collisions happening\n";
+    myfile << "Frame time,Elapsed time,Checks performed,Collisions happening\n";
 
     for (int i = 0; i < _data.size(); i++) {
 
