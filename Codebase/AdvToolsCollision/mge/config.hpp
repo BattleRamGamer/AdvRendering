@@ -1,3 +1,8 @@
+#ifndef CONFIG_HPP
+#define CONFIG_HPP
+
+
+
 #include <string>
 
 namespace config {
@@ -22,7 +27,7 @@ namespace config {
     // Use spatial partitioning
     const bool USE_QUADTREE(false);
     // Let C++ check what two collider types to check for
-    const bool USE_DOUBLEDISPATCH(false);
+    const bool USE_DOUBLEDISPATCH(true);
 
 
 
@@ -32,3 +37,5 @@ namespace config {
     const int SPACE_PART_ROWS(2);
     const int SPACE_PART_COLUMNS(2);
 }
+
+#endif // CONFIG_HPP

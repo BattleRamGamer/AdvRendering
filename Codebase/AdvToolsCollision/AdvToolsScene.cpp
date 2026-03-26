@@ -22,13 +22,15 @@
 #include "AdvToolsScene.hpp"
 #include "MoveBehaviour.hpp"
 #include "Collider.hpp"
+#include "AABB.hpp"
+#include "Sphere.hpp"
 #include "CollisionManager.hpp"
 #include "DataTracker.hpp"
 
 #include <fstream>
 
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
-AdvToolsScene::AdvToolsScene() :AbstractGame(), _hud(0), _collisionManager(0), _dataTracker(0)
+AdvToolsScene::AdvToolsScene() :AbstractGame(), _hud(0), _collisionManager(0), _dataTracker(0), _frameCount(0), _timerFinished(false)
 {
 }
 
@@ -84,7 +86,7 @@ void AdvToolsScene::_initializeScene()
         obj->setBehaviour(new MoveBehaviour(.1f, dir));
         _world->add(obj);
 
-        Collider* collider = new Collider(1, false); // false
+        Sphere* collider = new Sphere(1); // false
         collider->setMesh(discMesh);                // discMesh
         collider->setMaterial(colourMaterial);
         collider->setParent(obj);
@@ -102,7 +104,7 @@ void AdvToolsScene::_initializeScene()
         obj->setBehaviour(new MoveBehaviour(.1f, dir));
         _world->add(obj);
 
-        Collider* collider = new Collider(1, true); // false
+        AABB* collider = new AABB(1); // false
         collider->setMesh(planeMeshDefault);                // discMesh
         collider->setMaterial(colourMaterial);
         collider->setParent(obj);
@@ -145,8 +147,8 @@ void AdvToolsScene::_updateHud() {
         _dataTracker->StoreFrameData(
             clockTimer.restart().asSeconds(), 
             fp_ms.count(),
-            colCount, 
-            testCount);
+            testCount, 
+            colCount);
     }
     
 

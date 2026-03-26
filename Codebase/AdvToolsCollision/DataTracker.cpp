@@ -23,14 +23,14 @@ DataTracker::DataTracker() {
     //srand(0);
     
     //seed = 0;
-    printf("%s;%d",_fileName.c_str(), rand()%15);
+    //printf("%s;%d",_fileName.c_str(), rand()%15);
 }
 
 DataTracker::~DataTracker() {
     _data.clear();
 }
 
-void DataTracker::StoreFrameData(float frameTime, float elapsedTime, int pCollisions, int pChecksPerformed) {
+void DataTracker::StoreFrameData(float frameTime, float elapsedTime, int pChecksPerformed, int pCollisions) {
     _data.push_back(
         std::to_string(frameTime) + "," + 
         std::to_string(elapsedTime) + "," +

@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AABB.cpp" />
     <ClCompile Include="AdvToolsScene.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
@@ -156,8 +157,10 @@
     <ClCompile Include="mge\util\DebugHud.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="Space.cpp" />
+    <ClCompile Include="Sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AABB.hpp" />
     <ClInclude Include="AdvToolsScene.hpp" />
     <ClInclude Include="Collider.hpp" />
     <ClInclude Include="CollisionManager.hpp" />
@@ -187,6 +190,7 @@
     <ClInclude Include="mge\util\DebugHud.hpp" />
     <ClInclude Include="MoveBehaviour.hpp" />
     <ClInclude Include="Space.hpp" />
+    <ClInclude Include="Sphere.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="mge\models\Chaynik.mtl" />

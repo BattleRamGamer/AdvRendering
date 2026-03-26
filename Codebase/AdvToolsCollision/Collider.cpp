@@ -21,12 +21,6 @@ bool Collider::checkCollision(Collider* pCollider) const {
 	}
 	return checkCircleCircleCollision(pCollider);
 
-
-	/**
-	if (!getIsAABB() && !pCollider->getIsAABB()) {
-		return checkCircleCircleCollision(pCollider);
-	}
-	/**/
 }
 
 bool Collider::checkCircleCircleCollision(Collider* pCollider) const {
@@ -110,7 +104,19 @@ bool Collider::checkAABBAABBCollision(Collider* pCollider) const {
 
 }
 
+bool Collider::checkCollision(AABB* pCollider) const {
+	if (getIsAABB()) {
+		return checkAABBAABBCollision((Collider*)pCollider);
+	}
+	return checkCircleAABBCollision((Collider*)pCollider);
+}
 
+bool Collider::checkCollision(Sphere* pCollider) const {
+	if (getIsAABB()) {
+		return checkAABBCircleCollision((Collider*)pCollider);
+	}
+	return checkCircleCircleCollision((Collider*)pCollider);
+}
 
 float Collider::getRadius() const {
 	return radius;

@@ -2,7 +2,7 @@
 #include "mge/config.hpp"
 
 
-CollisionManager::CollisionManager() {
+CollisionManager::CollisionManager() : testAmount(0) {
 
 }
 
