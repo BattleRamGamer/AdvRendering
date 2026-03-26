@@ -45,18 +45,6 @@
     <ClCompile Include="mge\core\World.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mge\Assignment4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mge\Assignment3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mge\Assignment2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mge\MGEDemo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="mge\materials\TextureMaterial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -122,15 +110,6 @@
     <ClInclude Include="mge\materials\AbstractMaterial.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mge\Assignment2.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mge\Assignment3.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mge\Assignment4.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="mge\core\Camera.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -168,9 +147,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mge\core\Renderer.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mge\MGEDemo.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mge\core\Mesh.hpp">

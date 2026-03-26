@@ -133,9 +133,6 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DataTracker.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="mge\Assignment2.cpp" />
-    <ClCompile Include="mge\Assignment3.cpp" />
-    <ClCompile Include="mge\Assignment4.cpp" />
     <ClCompile Include="mge\behaviours\AbstractBehaviour.cpp" />
     <ClCompile Include="mge\behaviours\FollowBehaviour.cpp" />
     <ClCompile Include="mge\behaviours\KeysBehaviour.cpp" />
@@ -153,7 +150,6 @@
     <ClCompile Include="mge\materials\ColorMaterial.cpp" />
     <ClCompile Include="mge\materials\LightMaterial.cpp" />
     <ClCompile Include="mge\materials\TextureMaterial.cpp" />
-    <ClCompile Include="mge\MGEDemo.cpp" />
     <ClCompile Include="mge\util\DebugHud.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
     <ClCompile Include="Space.cpp" />
@@ -165,9 +161,6 @@
     <ClInclude Include="Collider.hpp" />
     <ClInclude Include="CollisionManager.hpp" />
     <ClInclude Include="DataTracker.hpp" />
-    <ClInclude Include="mge\Assignment2.hpp" />
-    <ClInclude Include="mge\Assignment3.hpp" />
-    <ClInclude Include="mge\Assignment4.hpp" />
     <ClInclude Include="mge\behaviours\AbstractBehaviour.hpp" />
     <ClInclude Include="mge\behaviours\FollowBehaviour.hpp" />
     <ClInclude Include="mge\behaviours\KeysBehaviour.hpp" />
@@ -186,7 +179,6 @@
     <ClInclude Include="mge\materials\ColorMaterial.hpp" />
     <ClInclude Include="mge\materials\LightMaterial.hpp" />
     <ClInclude Include="mge\materials\TextureMaterial.hpp" />
-    <ClInclude Include="mge\MGEDemo.hpp" />
     <ClInclude Include="mge\util\DebugHud.hpp" />
     <ClInclude Include="MoveBehaviour.hpp" />
     <ClInclude Include="Space.hpp" />
