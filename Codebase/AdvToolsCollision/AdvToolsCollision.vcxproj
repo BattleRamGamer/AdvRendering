@@ -132,6 +132,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DataTracker.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mge\behaviours\AbstractBehaviour.cpp" />
     <ClCompile Include="mge\behaviours\FollowBehaviour.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Collider.hpp" />
     <ClInclude Include="CollisionManager.hpp" />
     <ClInclude Include="DataTracker.hpp" />
+    <ClInclude Include="Grid.hpp" />
     <ClInclude Include="mge\behaviours\AbstractBehaviour.hpp" />
     <ClInclude Include="mge\behaviours\FollowBehaviour.hpp" />
     <ClInclude Include="mge\behaviours\KeysBehaviour.hpp" />

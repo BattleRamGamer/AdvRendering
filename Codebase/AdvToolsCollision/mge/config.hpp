@@ -16,7 +16,7 @@ namespace config {
     // Number of frames to test
     const int TEST_FRAME_COUNT(360);
     // Test for a set amount of: True = Time, False = Frames
-    const bool USE_TEST_METHOD_TIME(true);
+    const bool USE_TEST_METHOD_TIME(false);
 
     const int CIRCLE_COLLIDER_AMOUNT(200);
     const int AABB_COLLIDER_AMOUNT(100);
@@ -29,7 +29,8 @@ namespace config {
     // Let C++ check what two collider types to check for
     const bool USE_DOUBLEDISPATCH(true);
 
-
+    const int GRID_COLUMN_COUNT(5);
+    const int GRID_ROW_COUNT(5);
 
     // THIS IS NOT USED YET
     // 0 = no subdivision, 1 = only top space is divided, etc.

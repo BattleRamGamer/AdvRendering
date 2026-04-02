@@ -9,7 +9,7 @@ class Sphere : public Collider
 {
 public:
 
-	Sphere(float pRadius);
+	Sphere(float pX, float pY, float pRadius);
 	~Sphere();
 
 	virtual bool checkCollision(AABB* pCollider) const;

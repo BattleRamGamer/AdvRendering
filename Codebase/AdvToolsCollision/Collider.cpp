@@ -1,6 +1,6 @@
 #include "Collider.hpp"
 
-Collider::Collider(float radius, bool aabb) : GameObject("Collider"), radius(radius), isAABB(aabb) {
+Collider::Collider(float pX, float pY, float pRadius, bool pAabb) : GameObject("Collider", glm::vec3(pX, 0, pY)), radius(pRadius), isAABB(pAabb), prev_(NULL), next_(NULL) {
 
 }
 

@@ -1,7 +1,7 @@
 #include "AABB.hpp"
 
 
-AABB::AABB(float pRadius) : Collider(pRadius, true){
+AABB::AABB(float pX, float pY, float pRadius) : Collider(pX, pY, pRadius, true){
 
 }
 AABB::~AABB() {

@@ -14,8 +14,11 @@ public:
 	virtual ~MoveBehaviour();
 	virtual void update(float pStep);
 
+	virtual void setOwner(GameObject* pGameObject);
+
 protected:
 	glm::vec2 _moveDirection;
+	glm::vec2 _estimatedPosition;
 
 private:
 	float _moveSpeed;

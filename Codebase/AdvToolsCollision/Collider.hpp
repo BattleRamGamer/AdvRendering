@@ -13,7 +13,7 @@ class Collider : public GameObject {
 
 
 	public:
-		Collider(float radius, bool aabb);
+		Collider(float pX, float pY, float pRadius, bool pAabb);
 		~Collider();
 
 		// ADD VIRTUAL KEYWORD TO USE DOUBLE DISPATCH. LEAVE VIRTUAL OUT TO USE SWITCH
@@ -34,6 +34,9 @@ class Collider : public GameObject {
 		float radius;
 		bool isAABB;
 
+
+		Collider* prev_;
+		Collider* next_;
 
 };
 

@@ -81,16 +81,13 @@ void AdvToolsScene::_initializeScene()
         float zPos = glm::linearRand(-config::BOUNDARY_POSITION, config::BOUNDARY_POSITION);
         float dir = glm::linearRand(0, 360);
 
-        GameObject* obj = new GameObject("col", glm::vec3(xPos, 0, zPos));
-        obj->scale(glm::vec3(1, 1, 1));
-        obj->setBehaviour(new MoveBehaviour(.1f, dir));
-        _world->add(obj);
-
-        Sphere* collider = new Sphere(1); // false
-        collider->setMesh(discMesh);                // discMesh
+        Sphere* collider = new Sphere(xPos, zPos, 1); 
+        collider->setBehaviour(new MoveBehaviour(.1f, dir));
+        collider->setMesh(discMesh);
         collider->setMaterial(colourMaterial);
-        collider->setParent(obj);
+        _world->add(collider);
         _collisionManager->addCollider(collider);
+
     }
 
     for (int i = 0; i < config::AABB_COLLIDER_AMOUNT; i++) {
@@ -99,16 +96,13 @@ void AdvToolsScene::_initializeScene()
         float zPos = glm::linearRand(-config::BOUNDARY_POSITION, config::BOUNDARY_POSITION);
         float dir = glm::linearRand(0, 360);
 
-        GameObject* obj = new GameObject("col", glm::vec3(xPos, 0, zPos));
-        obj->scale(glm::vec3(1, 1, 1));
-        obj->setBehaviour(new MoveBehaviour(.1f, dir));
-        _world->add(obj);
-
-        AABB* collider = new AABB(1); // false
-        collider->setMesh(planeMeshDefault);                // discMesh
+        AABB* collider = new AABB(xPos, zPos, 1); 
+        collider->setBehaviour(new MoveBehaviour(.1f, dir));
+        collider->setMesh(planeMeshDefault);
         collider->setMaterial(colourMaterial);
-        collider->setParent(obj);
+        _world->add(collider);
         _collisionManager->addCollider(collider);
+
     }
 
 }

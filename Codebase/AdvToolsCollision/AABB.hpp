@@ -9,7 +9,7 @@ class AABB : public Collider
 {
 public:
 
-	AABB(float pRadius);
+	AABB(float pX, float pY, float pRadius);
 	~AABB();
 
 	virtual bool checkCollision(AABB* pCollider) const;

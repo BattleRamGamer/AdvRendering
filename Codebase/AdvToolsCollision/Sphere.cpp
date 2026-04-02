@@ -1,7 +1,7 @@
 #include "Sphere.hpp"
 
 
-Sphere::Sphere(float pRadius) : Collider(pRadius, false) {
+Sphere::Sphere(float pX, float pY, float pRadius) : Collider(pX, pY, pRadius, false) {
 
 }
 Sphere::~Sphere() {
@@ -17,7 +17,7 @@ bool Sphere::checkCollision(Collider* pCollider) const {
 }
 
 bool Sphere::checkCollision(AABB* pCollider) const {
-	printf("Did sphere aabb check");
+
 	return checkCircleAABBCollision((Collider*)pCollider);
 }
 
