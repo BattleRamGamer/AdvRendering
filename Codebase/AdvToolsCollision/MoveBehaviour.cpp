@@ -25,14 +25,18 @@ void MoveBehaviour::update(float pStep)
 	//float x = _owner->getWorldPosition().x;
 	//float z = _owner->getWorldPosition().z;
 
-	if (x < -config::BOUNDARY_POSITION && _moveDirection.x < 0 || 
-		x >  config::BOUNDARY_POSITION && _moveDirection.x > 0) 
+	if (x < 0.0f && _moveDirection.x < 0 || 
+		x > config::BOUNDARY_SIZE && _moveDirection.x > 0)
 		_moveDirection.x *= -1;
 
-	if (z < -config::BOUNDARY_POSITION && _moveDirection.y < 0 || 
-		z >  config::BOUNDARY_POSITION && _moveDirection.y > 0)
+	if (z < 0.0f && _moveDirection.y < 0 || 
+		z > config::BOUNDARY_SIZE && _moveDirection.y > 0)
 		_moveDirection.y *= -1;
 
+}
+
+glm::vec2 MoveBehaviour::GetPosition() const{
+	return _estimatedPosition;
 }
 
 void MoveBehaviour::setOwner(GameObject* pOwner) {

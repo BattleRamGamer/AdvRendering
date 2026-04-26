@@ -16,6 +16,8 @@ public:
 
 	virtual void setOwner(GameObject* pGameObject);
 
+	glm::vec2 GetPosition() const;
+
 protected:
 	glm::vec2 _moveDirection;
 	glm::vec2 _estimatedPosition;

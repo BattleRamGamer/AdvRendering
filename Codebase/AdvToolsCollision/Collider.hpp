@@ -3,6 +3,7 @@
 
 #include "mge/core/GameObject.hpp"
 #include "mge/config.hpp"
+#include "Grid.hpp"
 //#include "AABB.hpp"
 //#include "Sphere.hpp"
 
@@ -11,7 +12,7 @@ class Sphere;
 
 class Collider : public GameObject {
 
-
+	friend class Grid;
 	public:
 		Collider(float pX, float pY, float pRadius, bool pAabb);
 		~Collider();

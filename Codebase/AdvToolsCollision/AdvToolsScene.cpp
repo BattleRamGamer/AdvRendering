@@ -70,15 +70,15 @@ void AdvToolsScene::_initializeScene()
     //SCENE SETUP
 
    //add camera first (it will be updated last)
-    Camera* camera = new Camera("camera", glm::vec3(0, 50, 0));
+    Camera* camera = new Camera("camera", glm::vec3(config::BOUNDARY_SIZE*.5f, 50, config::BOUNDARY_SIZE*.5f));
     camera->rotate(-glm::pi<float>()/2, glm::vec3(1, 0, 0));
     _world->add(camera);
     _world->setMainCamera(camera);
 
     for (int i = 0; i < config::CIRCLE_COLLIDER_AMOUNT; i++) {
         
-        float xPos = glm::linearRand(-config::BOUNDARY_POSITION, config::BOUNDARY_POSITION);
-        float zPos = glm::linearRand(-config::BOUNDARY_POSITION, config::BOUNDARY_POSITION);
+        float xPos = glm::linearRand(0.0f, config::BOUNDARY_SIZE);
+        float zPos = glm::linearRand(0.0f, config::BOUNDARY_SIZE);
         float dir = glm::linearRand(0, 360);
 
         Sphere* collider = new Sphere(xPos, zPos, 1); 
@@ -92,8 +92,8 @@ void AdvToolsScene::_initializeScene()
 
     for (int i = 0; i < config::AABB_COLLIDER_AMOUNT; i++) {
 
-        float xPos = glm::linearRand(-config::BOUNDARY_POSITION, config::BOUNDARY_POSITION);
-        float zPos = glm::linearRand(-config::BOUNDARY_POSITION, config::BOUNDARY_POSITION);
+        float xPos = glm::linearRand(0.0f, config::BOUNDARY_SIZE);
+        float zPos = glm::linearRand(0.0f, config::BOUNDARY_SIZE);
         float dir = glm::linearRand(0, 360);
 
         AABB* collider = new AABB(xPos, zPos, 1); 
