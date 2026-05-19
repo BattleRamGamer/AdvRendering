@@ -30,7 +30,7 @@
 #include <fstream>
 
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
-AdvToolsScene::AdvToolsScene() :AbstractGame(), _hud(0), _collisionManager(0), _dataTracker(0), _frameCount(0), _timerFinished(false)
+AdvToolsScene::AdvToolsScene() :AbstractGame(), _hud(0), _collisionManager(0), _dataTracker(0), _gridManager(), _frameCount(0), _timerFinished(false)
 {
 }
 
@@ -49,7 +49,7 @@ void AdvToolsScene::initialize() {
 void AdvToolsScene::_initializeScene()
 {
 
-
+    _gridManager = new GridManager();
 
 
     _collisionManager = new CollisionManager();
@@ -75,6 +75,10 @@ void AdvToolsScene::_initializeScene()
     _world->add(camera);
     _world->setMainCamera(camera);
 
+
+    _world->add(_gridManager);
+
+
     for (int i = 0; i < config::CIRCLE_COLLIDER_AMOUNT; i++) {
         
         float xPos = glm::linearRand(0.0f, config::BOUNDARY_SIZE);
@@ -82,11 +86,13 @@ void AdvToolsScene::_initializeScene()
         float dir = glm::linearRand(0, 360);
 
         Sphere* collider = new Sphere(xPos, zPos, 1); 
-        collider->setBehaviour(new MoveBehaviour(.1f, dir));
+        collider->setBehaviour(new MoveBehaviour(_gridManager, .1f, dir));
         collider->setMesh(discMesh);
-        collider->setMaterial(colourMaterial);
+        collider->setMaterial(new ColorMaterial(glm::vec3(1, 0, 1)));
         _world->add(collider);
         _collisionManager->addCollider(collider);
+
+        _gridManager->Add(collider);
 
     }
 
@@ -97,11 +103,13 @@ void AdvToolsScene::_initializeScene()
         float dir = glm::linearRand(0, 360);
 
         AABB* collider = new AABB(xPos, zPos, 1); 
-        collider->setBehaviour(new MoveBehaviour(.1f, dir));
+        collider->setBehaviour(new MoveBehaviour(_gridManager, .1f, dir));
         collider->setMesh(planeMeshDefault);
-        collider->setMaterial(colourMaterial);
+        collider->setMaterial(new ColorMaterial(glm::vec3(1, 0, 1)));
         _world->add(collider);
         _collisionManager->addCollider(collider);
+
+        _gridManager->Add(collider);
 
     }
 
@@ -112,6 +120,14 @@ void AdvToolsScene::_update(float pStep) {
 }
 
 void AdvToolsScene::_render() {
+    /**
+    if (config::USE_SPATIALPARTITIONING) {
+        //_gridManager->handleCollisions();
+    }
+    else {
+        //_collisionManager->checkCollisions();
+    }
+    /**/
     AbstractGame::_render();
     _updateHud();
 }
@@ -119,8 +135,23 @@ void AdvToolsScene::_render() {
 void AdvToolsScene::_updateHud() {
     std::string debugInfo = "";
 
-    int colCount = _collisionManager->checkCollisions();
-    int testCount = _collisionManager->getTestAmount();
+    int colCount = 0;
+    int testCount = 0;
+
+    if (config::USE_SPATIALPARTITIONING) {
+        colCount = _gridManager->GetCollisionCount();
+        testCount = _gridManager->GetTestCount();
+
+    }
+    else {
+        colCount = _collisionManager->checkCollisions();
+        testCount = _collisionManager->getTestAmount();
+    }
+
+    _collisionManager->checkCollisions();
+
+
+    debugInfo += std::string("Frame count: ") + std::to_string(_frameCount) + "\n";
     debugInfo += std::string("FPS:") + std::to_string((int)_fps) + "\n";
     debugInfo += std::string("Number of collisions: ") + std::to_string(colCount) + "\n";
     debugInfo += std::string("Number of tests: ") + std::to_string(testCount);

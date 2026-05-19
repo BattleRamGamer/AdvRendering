@@ -37,6 +37,8 @@ class AdvToolsScene : public AbstractGame
 		DebugHud* _hud;                   //hud display
 		CollisionManager* _collisionManager;
 		DataTracker* _dataTracker;
+		GridManager* _gridManager;
+		//Grid* _grid;
 
 		sf::Clock clockTimer;
 		int _frameCount;

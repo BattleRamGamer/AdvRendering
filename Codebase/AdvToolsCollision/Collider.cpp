@@ -1,6 +1,6 @@
 #include "Collider.hpp"
 
-Collider::Collider(float pX, float pY, float pRadius, bool pAabb) : GameObject("Collider", glm::vec3(pX, 0, pY)), radius(pRadius), isAABB(pAabb), prev_(NULL), next_(NULL) {
+Collider::Collider(float pX, float pY, float pRadius, bool pAabb) : GameObject("Collider", glm::vec3(pX, 0, pY)), radius(pRadius), isAABB(pAabb), prev_(NULL), next_(NULL), cellX(0), cellY(0), gridNr(0), isColliding(false) {
 
 }
 
@@ -124,4 +124,16 @@ float Collider::getRadius() const {
 
 bool Collider::getIsAABB() const {
 	return isAABB;
+}
+
+void Collider::SetColMaterial(float r, float g, float b, float a) {
+	((ColorMaterial*)getMaterial())->setDiffuseColor(glm::vec4(r, g, b, a));
+}
+
+void Collider::ReloadMaterial() {
+	float r = (isColliding) ? 1.0f : 0;
+	float g = (float)cellX / (config::GRID_CELL_COUNT - 1);
+	float b = (float)cellY / (config::GRID_CELL_COUNT - 1);
+	float a = ((float)gridNr + 1) / 10;
+	((ColorMaterial*)getMaterial())->setDiffuseColor(glm::vec4(r, g, b, a));
 }

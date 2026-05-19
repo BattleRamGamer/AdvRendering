@@ -3,7 +3,8 @@
 
 #include "mge/core/GameObject.hpp"
 #include "mge/config.hpp"
-#include "Grid.hpp"
+//#include "Grid.hpp"
+#include "GridManager.hpp"
 //#include "AABB.hpp"
 //#include "Sphere.hpp"
 
@@ -12,12 +13,13 @@ class Sphere;
 
 class Collider : public GameObject {
 
+	friend class GridManager;
 	friend class Grid;
 	public:
 		Collider(float pX, float pY, float pRadius, bool pAabb);
 		~Collider();
 
-		// ADD VIRTUAL KEYWORD TO USE DOUBLE DISPATCH. LEAVE VIRTUAL OUT TO USE SWITCH
+
 		virtual bool checkCollision(Collider* pCollider) const;
 
 
@@ -31,6 +33,15 @@ class Collider : public GameObject {
 
 		float getRadius() const;
 		bool getIsAABB() const;
+
+		void SetColMaterial(float r, float g, float b, float a);
+
+		void ReloadMaterial();
+
+		int cellX;
+		int cellY;
+		int gridNr;
+		bool isColliding;
 	protected:
 		float radius;
 		bool isAABB;

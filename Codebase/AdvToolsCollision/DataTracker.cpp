@@ -13,7 +13,7 @@ DataTracker::DataTracker() {
               + std::to_string(config::AABB_COLLIDER_AMOUNT)
         + "-" + std::to_string(config::CIRCLE_COLLIDER_AMOUNT)
         + "-" + std::to_string(config::USE_IGNOREHISTORY)
-        + "-" + std::to_string(config::USE_QUADTREE)
+        + "-" + std::to_string(config::USE_SPATIALPARTITIONING)
         + "-" + std::to_string(config::USE_DOUBLEDISPATCH)
         + "-Timetype" + std::to_string(config::USE_TEST_METHOD_TIME);
 

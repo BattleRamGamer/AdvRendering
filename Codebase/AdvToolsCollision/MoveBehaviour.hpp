@@ -4,13 +4,15 @@
 #include <vector>
 #include "glm.hpp"
 #include "mge/behaviours/AbstractBehaviour.hpp"
+#include "GridManager.hpp"
 
+class GridManager;
 
 class MoveBehaviour : public AbstractBehaviour
 {
 public:
 	//move speed is in units per second, turnspeed in degrees per second
-	MoveBehaviour(float pMoveSpeed = 5, float pMoveAngle = 45);
+	MoveBehaviour(GridManager* pGridManager, float pMoveSpeed = 5, float pMoveAngle = 45);
 	virtual ~MoveBehaviour();
 	virtual void update(float pStep);
 
@@ -21,6 +23,7 @@ public:
 protected:
 	glm::vec2 _moveDirection;
 	glm::vec2 _estimatedPosition;
+	GridManager* _gridManager;
 
 private:
 	float _moveSpeed;

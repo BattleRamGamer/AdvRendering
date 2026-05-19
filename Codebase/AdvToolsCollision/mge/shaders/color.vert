@@ -25,6 +25,9 @@ uniform	mat4 	modelMatrix;
 
 uniform float lightIntensity;
 
+out vec2 vuv;
+
 void main( void ){
 	gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(vertex, 1.f);
+	vuv = uv;
 }

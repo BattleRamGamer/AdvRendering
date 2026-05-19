@@ -19,7 +19,7 @@ class ColorMaterial : public AbstractMaterial
         virtual void render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) override;
 
         //in rgb values
-        void setDiffuseColor (glm::vec3 pDiffuseColor);
+        void setDiffuseColor (glm::vec4 pDiffuseColor);
 
     private:
         //all the static properties are shared between instances of ColorMaterial
@@ -28,7 +28,7 @@ class ColorMaterial : public AbstractMaterial
         static void _lazyInitializeShader();
 
         //this one is unique per instance of color material
-        glm::vec3 _diffuseColor;
+        glm::vec4 _diffuseColor;
 };
 
 #endif // COLORMATERIAL_HPP

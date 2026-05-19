@@ -14,9 +14,19 @@ namespace config {
     // Time in seconds to test for
     const int TEST_TIME(10);
     // Number of frames to test
-    const int TEST_FRAME_COUNT(360);
+    const int TEST_FRAME_COUNT(36000);
     // Test for a set amount of: True = Time, False = Frames
     const bool USE_TEST_METHOD_TIME(false);
+
+    // Ignore collision checks that already happened
+    const bool USE_IGNOREHISTORY(true);
+
+    // Use spatial partitioning. 
+    const bool USE_SPATIALPARTITIONING(true);
+
+    // Let C++ check what two collider types to check for (True) OR use an if-statement to check (False) 
+    const bool USE_DOUBLEDISPATCH(true);
+
 
     const int CIRCLE_COLLIDER_AMOUNT(200);
     const int AABB_COLLIDER_AMOUNT(100);
@@ -24,17 +34,19 @@ namespace config {
     // If triple grid, Boundary Size should be (Cell Count - 1) * Cell Size
     const float BOUNDARY_SIZE(40.0f);
     const float GRID_CELL_SIZE(10.0f);
-    const int GRID_CELL_COUNT(5);
+    const int GRID_CELL_COUNT(6);
+
+    const bool GRID_TRIPLE(true);
+
+    // NOTE: The grid and cells are part of an unfinished feature. These don't do anything yet
 
     const int GRID_COLUMN_COUNT(5);
     const int GRID_ROW_COUNT(5);
 
-    // Ignore collision checks that already happened
-    const bool USE_IGNOREHISTORY(true);
-    // Use spatial partitioning
-    const bool USE_QUADTREE(false);
-    // Let C++ check what two collider types to check for
-    const bool USE_DOUBLEDISPATCH(true);
+
+
+
+
 
 
     // THIS IS NOT USED YET
