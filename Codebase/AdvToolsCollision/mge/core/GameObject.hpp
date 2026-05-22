@@ -4,7 +4,7 @@
 #include <vector>
 #include "../../glm.hpp"
 
-class AbstractCollider;
+//class AbstractCollider;
 class AbstractBehaviour;
 class AbstractMaterial;
 class World;

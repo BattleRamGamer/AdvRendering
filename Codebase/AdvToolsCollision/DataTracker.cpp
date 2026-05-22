@@ -9,13 +9,19 @@ DataTracker::DataTracker() {
 	// Set fileName
 	// Set constantData
 
-    _fileName = "test-" 
-              + std::to_string(config::AABB_COLLIDER_AMOUNT)
+    _fileName = "test-"
+        + std::to_string(config::AABB_COLLIDER_AMOUNT)
         + "-" + std::to_string(config::CIRCLE_COLLIDER_AMOUNT)
-        + "-" + std::to_string(config::USE_IGNOREHISTORY)
-        + "-" + std::to_string(config::USE_SPATIALPARTITIONING)
-        + "-" + std::to_string(config::USE_DOUBLEDISPATCH)
-        + "-Timetype" + std::to_string(config::USE_TEST_METHOD_TIME);
+        + "-" + BoolToString(config::USE_IGNOREHISTORY)
+        + "-" + BoolToString(config::USE_SPATIALPARTITIONING)
+        + "-" + BoolToString(config::GRID_TRIPLE)
+        + "-" + BoolToString(config::USE_DOUBLEDISPATCH)
+        + "-" + std::to_string(config::TEST_FRAME_COUNT)
+        + "-" + std::to_string(config::GRID_CELL_COUNT);
+    
+
+    // Add cell size and stuff?
+
 
     //_constantData = std::string config::AABB_COLLIDER_AMOUNT;
     // 
@@ -30,10 +36,11 @@ DataTracker::~DataTracker() {
     _data.clear();
 }
 
-void DataTracker::StoreFrameData(float frameTime, float elapsedTime, int pChecksPerformed, int pCollisions) {
+void DataTracker::StoreFrameData(int pFrameCount, float pFrameTime, float pElapsedTime, int pChecksPerformed, int pCollisions) {
     _data.push_back(
-        std::to_string(frameTime) + "," + 
-        std::to_string(elapsedTime) + "," +
+        std::to_string(pFrameCount) + "," +
+        std::to_string(pFrameTime) + "," + 
+        std::to_string(pElapsedTime) + "," +
         std::to_string(pChecksPerformed) + "," + 
         std::to_string(pCollisions));
 }
@@ -41,7 +48,7 @@ void DataTracker::StoreFrameData(float frameTime, float elapsedTime, int pChecks
 void DataTracker::WriteDataToFile() {
     std::ofstream myfile;
 
-    // Writing to fileName. Use std::ios::app to append the new results
+    // Writing to fileName. Use std::ios::app to append the new results, ::out to override previous results
     myfile.open("../../Raw results/" + _fileName + ".csv", std::ios::out);
 
     myfile << "Frame time,Elapsed time,Checks performed,Collisions happening\n";
@@ -59,4 +66,9 @@ void DataTracker::WriteDataToFile() {
     myfile << "semi;colon";
     /**/
     myfile.close();
+}
+
+
+std::string DataTracker::BoolToString(bool pBool) {
+    return pBool ? "true" : "false";
 }

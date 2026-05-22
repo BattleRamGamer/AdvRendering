@@ -40,6 +40,10 @@ class LightMaterial : public AbstractMaterial
         LightMaterial(const LightMaterial&);
         LightMaterial& operator=(const LightMaterial&);
 
+
+        // Filling memory gaps
+        int gapFill0 = 0;
+
 };
 
 #endif // TEXTUREMATERIAL_HPP

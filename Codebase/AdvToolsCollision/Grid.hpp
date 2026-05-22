@@ -19,12 +19,12 @@ public:
 
 	void Detatch(Collider* pCollider, int pOldX, int pOldY, int pGridOffsetNr = -1);
 
-	// First move the collider, then call this function
+	// This function is only called for the single grid system
 	void CheckMovement(Collider* pCollider, glm::vec2 oldPos, glm::vec2 newPos);
 
 	void handleCollisions();
 
-	// Insert the cell coordinates here
+	// Insert the cell coordinates here. Only called in a single grid system
 	void handleCell(int pX, int pY);
 
 	void handleCollider(Collider* pCollider);
@@ -37,7 +37,7 @@ public:
 	int GetCollisionCount();
 
 private:
-	int GetChosenGrid(float pPosition);
+	int GetCellPos(float pPos);
 
 	Collider* cells_[config::GRID_CELL_COUNT][config::GRID_CELL_COUNT];
 
@@ -46,8 +46,11 @@ private:
 
 	int gridNr;
 
-	ColorMaterial* redMaterialNoCol = new ColorMaterial(glm::vec3(1, 0, 0));
-	ColorMaterial* greenMaterialYesCol = new ColorMaterial(glm::vec3(0, 1, 0));
+	// Memory gap filling
+	int fillGap0 = 0;
+
+	//ColorMaterial* redMaterialNoCol = new ColorMaterial(glm::vec3(1, 0, 0));
+	//ColorMaterial* greenMaterialYesCol = new ColorMaterial(glm::vec3(0, 1, 0));
 
 };
 

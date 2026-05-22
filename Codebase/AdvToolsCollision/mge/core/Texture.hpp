@@ -20,6 +20,9 @@ class Texture
 
 	    //OpenGL id for texture buffer
 		GLuint _id;
+
+		// Filling memory gap
+		int gapFill0 = 0;
 };
 
 #endif // TEXTURE_HPP

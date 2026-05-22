@@ -25,8 +25,10 @@ bool Collider::checkCollision(Collider* pCollider) const {
 
 bool Collider::checkCircleCircleCollision(Collider* pCollider) const {
 
-	glm::vec3 diff = pCollider->getWorldPosition() - getWorldPosition();
-	float centerDist = sqrt(diff.x * diff.x + diff.z * diff.z);
+
+	glm::vec2 diff = pCollider->GetVec2Pos() - GetVec2Pos();
+	float centerDist = sqrt(diff.x * diff.x + diff.y * diff.y);
+
 	float edgeDist = centerDist - pCollider->getRadius() - getRadius();
 	return edgeDist <= 0 ? true : false;
 
@@ -34,11 +36,10 @@ bool Collider::checkCircleCircleCollision(Collider* pCollider) const {
 
 bool Collider::checkCircleAABBCollision(Collider* pCollider) const {
 
-	glm::vec3 cPos3 = getWorldPosition();
-	glm::vec2 cPos = glm::vec2(cPos3.x, cPos3.z);
 
-	glm::vec3 aPos3 = pCollider->getWorldPosition();
-	glm::vec2 aPos = glm::vec2(aPos3.x, aPos3.z);
+	glm::vec2 cPos = GetVec2Pos();
+
+	glm::vec2 aPos = pCollider->GetVec2Pos();
 
 	glm::vec2 diff = aPos - cPos;
 
@@ -59,11 +60,11 @@ bool Collider::checkCircleAABBCollision(Collider* pCollider) const {
 
 bool Collider::checkAABBCircleCollision(Collider* pCollider) const {
 
-	glm::vec3 aPos3 = getWorldPosition();
-	glm::vec2 aPos = glm::vec2(aPos3.x, aPos3.z);
 
-	glm::vec3 cPos3 = pCollider->getWorldPosition();
-	glm::vec2 cPos = glm::vec2(cPos3.x, cPos3.z);
+	glm::vec2 aPos = GetVec2Pos();
+
+
+	glm::vec2 cPos = pCollider->GetVec2Pos();
 
 	glm::vec2 diff = aPos - cPos;
 
@@ -84,11 +85,8 @@ bool Collider::checkAABBCircleCollision(Collider* pCollider) const {
 
 bool Collider::checkAABBAABBCollision(Collider* pCollider) const {
 
-	glm::vec3 threePos1 = getWorldPosition();
-	glm::vec3 threePos2 = pCollider->getWorldPosition();
-
-	glm::vec2 pos1 = glm::vec2(threePos1.x, threePos1.z);
-	glm::vec2 pos2 = glm::vec2(threePos2.x, threePos2.z);
+	glm::vec2 pos1 = GetVec2Pos();
+	glm::vec2 pos2 = pCollider->GetVec2Pos();
 
 	float rad1 = getRadius();
 	float rad2 = pCollider->getRadius();
@@ -135,5 +133,10 @@ void Collider::ReloadMaterial() {
 	float g = (float)cellX / (config::GRID_CELL_COUNT - 1);
 	float b = (float)cellY / (config::GRID_CELL_COUNT - 1);
 	float a = ((float)gridNr + 1) / 10;
-	((ColorMaterial*)getMaterial())->setDiffuseColor(glm::vec4(r, g, b, a));
+	SetColMaterial(r, g, b, a);
+	//((ColorMaterial*)getMaterial())->setDiffuseColor(glm::vec4(r, g, b, a));
+}
+
+glm::vec2 Collider::GetVec2Pos() const {
+	return ((MoveBehaviour*)getBehaviour())->GetPosition();
 }

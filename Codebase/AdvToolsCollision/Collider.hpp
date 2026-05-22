@@ -34,6 +34,8 @@ class Collider : public GameObject {
 		float getRadius() const;
 		bool getIsAABB() const;
 
+		glm::vec2 GetVec2Pos() const;
+
 		void SetColMaterial(float r, float g, float b, float a);
 
 		void ReloadMaterial();
@@ -43,8 +45,15 @@ class Collider : public GameObject {
 		int gridNr;
 		bool isColliding;
 	protected:
-		float radius;
 		bool isAABB;
+
+		// Filling memory gaps
+		bool fillGap1 = false;
+		bool fillGap2 = false;
+		float fillGap3 = 0.0f;
+
+
+		float radius;
 
 
 		Collider* prev_;

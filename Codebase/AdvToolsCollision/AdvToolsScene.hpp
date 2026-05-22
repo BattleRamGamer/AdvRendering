@@ -38,12 +38,17 @@ class AdvToolsScene : public AbstractGame
 		CollisionManager* _collisionManager;
 		DataTracker* _dataTracker;
 		GridManager* _gridManager;
-		//Grid* _grid;
 
 		sf::Clock clockTimer;
 		int _frameCount;
-		std::chrono::high_resolution_clock::time_point _startTime = std::chrono::high_resolution_clock::now();
 		bool _timerFinished;
+
+		// Filling memory gaps
+		bool fillGap0 = false;
+		bool fillGap1 = false;
+		bool fillGap2 = false;
+
+		std::chrono::high_resolution_clock::time_point _startTime = std::chrono::high_resolution_clock::now();
 
 		void _updateHud();
 		void _checkTimer();

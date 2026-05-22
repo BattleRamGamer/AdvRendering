@@ -92,6 +92,13 @@ protected:
 
 	//calls render on each and every child gameobject, material cannot be null!
 	void renderChildren(World* pWorld, GameObject* pGameObject, AbstractMaterial* pMaterial, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix, bool pRecursive);
+
+
+	// Filling memory gaps
+	bool gapFill0 = false;
+	bool gapFill1 = false;
+	bool gapFill2 = false;
+	int gapFill3 = 0;
 };
 
 #endif // RENDERER_HPP

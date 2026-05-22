@@ -64,8 +64,8 @@ void AdvToolsScene::_initializeScene()
 
 
     //MATERIALS
-
-    AbstractMaterial* colourMaterial = new ColorMaterial(glm::vec3(1, 0, 1));
+    // Not sharing any materials so each collider can show debug information
+    //AbstractMaterial* colourMaterial = new ColorMaterial(glm::vec3(1, 0, 1));
 
     //SCENE SETUP
 
@@ -148,7 +148,7 @@ void AdvToolsScene::_updateHud() {
         testCount = _collisionManager->getTestAmount();
     }
 
-    _collisionManager->checkCollisions();
+    //_collisionManager->checkCollisions();
 
 
     debugInfo += std::string("Frame count: ") + std::to_string(_frameCount) + "\n";
@@ -170,6 +170,7 @@ void AdvToolsScene::_updateHud() {
         const std::chrono::duration<double, std::ratio<1>> fp_ms = t2 - _startTime;
 
         _dataTracker->StoreFrameData(
+            _frameCount,
             clockTimer.restart().asSeconds(), 
             fp_ms.count(),
             testCount, 

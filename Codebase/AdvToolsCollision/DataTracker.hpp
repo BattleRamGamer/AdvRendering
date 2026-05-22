@@ -4,7 +4,17 @@
 #include <vector>
 #include <string>
 
-
+/**
+ Stores data in the following order:
+ AABB Collider amount
+ Circle collider amount
+ Ignore repeat collision checks
+ Enable spatial partitioning
+ Enable triple grid method
+ Enable double dispatch
+ Number of frames to test
+ Number of cells in one Grid row/column
+ */
 class DataTracker {
 
 
@@ -13,7 +23,7 @@ public:
 	virtual ~DataTracker();
 
 	// Should be called at the end of every frame
-	void StoreFrameData(float frameTime, float elapedTime, int pChecksPerformed, int pCollisions);
+	void StoreFrameData(int pFrameCount, float pFrameTime, float pElapsedTime, int pChecksPerformed, int pCollisions);
 
 	// When the test is finished, write the data to the .csv file
 	void WriteDataToFile();
@@ -21,7 +31,7 @@ public:
 protected:
 
 	//int seed;
-
+	std::string BoolToString(bool pBool);
 
 	// Name of the .csv file to write to
 	std::string _fileName;

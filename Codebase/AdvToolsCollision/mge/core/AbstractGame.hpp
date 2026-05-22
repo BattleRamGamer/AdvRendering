@@ -55,6 +55,9 @@ class AbstractGame
 		World* _world;              //the root game object that represents our scene
 		float _fps;                 //stores the real fps
 
+        // Filling memory gaps
+        float gapFill0 = 0;
+
     private:
         AbstractGame(const AbstractGame&);
         AbstractGame& operator=(const AbstractGame&);

@@ -20,9 +20,16 @@ class FollowBehaviour : public AbstractBehaviour
 		float xAxisRot;
 		float yAxisRot;
 
+
+		// Filling memory gaps
+		bool gapFill0 = false;
+		bool gapFill1 = false;
+		bool gapFill2 = false;
+
+
+		bool mouseIsPressed;
 		float oldMouseX;
 		float oldMouseY;
-		bool mouseIsPressed;
 		float xSensitivity;
 		float ySensitivity;
 

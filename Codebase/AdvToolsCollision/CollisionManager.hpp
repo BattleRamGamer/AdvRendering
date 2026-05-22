@@ -19,14 +19,16 @@ class CollisionManager {
 
 		int getTestAmount();
 
+		void independentCollisionCheck(int pI, int pJ);
+
 	protected:
 		std::vector<Collider*> _colliders;
 
 		int testAmount;
 
-		// Add colour textures here!!!
-		AbstractMaterial* redMaterial = new ColorMaterial(glm::vec3(1, 0, 0));
-		AbstractMaterial* greenMaterial = new ColorMaterial(glm::vec3(0, 1, 0));
+		// Memory gap filling
+		int gapFill0 = 0;
+
 };
 
 

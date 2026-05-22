@@ -3,6 +3,7 @@
 #include "AbstractGame.hpp"
 #include "Renderer.hpp"
 #include "World.hpp"
+#include "../config.hpp"
 
 AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_world(NULL), _fps(0)
 {
@@ -98,7 +99,7 @@ void AbstractGame::run()
 	while (_window->isOpen()) {
 		timeSinceLastUpdate += updateClock.restart();
 
-		if (timeSinceLastUpdate > timePerFrame && _window->hasFocus())
+		if ((config::REMOVE_FPS_CAP || timeSinceLastUpdate > timePerFrame) && _window->hasFocus())
 		{
             glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 

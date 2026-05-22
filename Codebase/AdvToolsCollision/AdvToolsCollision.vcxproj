@@ -154,7 +154,6 @@
     <ClCompile Include="mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="mge\util\DebugHud.cpp" />
     <ClCompile Include="MoveBehaviour.cpp" />
-    <ClCompile Include="Space.cpp" />
     <ClCompile Include="Sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -185,7 +184,6 @@
     <ClInclude Include="mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="mge\util\DebugHud.hpp" />
     <ClInclude Include="MoveBehaviour.hpp" />
-    <ClInclude Include="Space.hpp" />
     <ClInclude Include="Sphere.hpp" />
   </ItemGroup>
   <ItemGroup>

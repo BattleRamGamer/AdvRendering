@@ -45,7 +45,10 @@ private:
 
 	std::vector<Grid*> grids_;
 
+	void AddToGrid(Collider* pCollider, int pGridX, int pGridY);
+	void DetatchFromGrid(Collider* pCollider, int pGridX, int pGridY, glm::vec2 pPos);
 	int GetChosenGrid(float pPosition);
+	bool IsTripleGrid();
 
 
 	//Collider* cells_[config::GRID_CELL_COUNT][config::GRID_CELL_COUNT];

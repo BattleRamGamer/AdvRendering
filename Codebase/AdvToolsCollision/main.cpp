@@ -22,9 +22,6 @@ int main()
 {
     std::cout << "Starting Game" << std::endl;
 
-    //AbstractGame* game = new Assignment2();
-    //AbstractGame* game = new Assignment3();
-    //AbstractGame* game = new Assignment4();
     AbstractGame* game = new AdvToolsScene();
     game->initialize();
     game->run();
