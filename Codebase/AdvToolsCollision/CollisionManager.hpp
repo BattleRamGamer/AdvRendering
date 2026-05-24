@@ -18,6 +18,7 @@ class CollisionManager {
 		int checkCollisionsIgnoreHistory();
 
 		int getTestAmount();
+		int getCollisionAmount();
 
 		void independentCollisionCheck(int pI, int pJ);
 
@@ -25,9 +26,7 @@ class CollisionManager {
 		std::vector<Collider*> _colliders;
 
 		int testAmount;
-
-		// Memory gap filling
-		int gapFill0 = 0;
+		int collisionAmount;
 
 };
 

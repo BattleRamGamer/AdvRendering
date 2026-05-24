@@ -83,7 +83,6 @@ void GridManager::handleCollisions() {
 
 	collisionTestCount = 0;
 	numberOfCollisions = 0;
-	//ResetColors();
 
 	for (int i = 0; i < (IsTripleGrid() ? 3 : 1); i++) {
 		handleGrid(i);
@@ -163,7 +162,7 @@ void GridManager::AddToGrid(Collider* pCollider, int pGridX, int pGridY) {
 	}
 	else {
 		if (pGridX == 2 && pGridY == 0) {
-			// ERROR IS OCCURING: This means that the Y cell needs to be decreased by 1
+			// EDGE CASE: This means that the Y cell needs to be decreased by 1
 			// The 20 stands for X grid = 2, Y grid = 0
 			grids_[pGridX]->Add(pCollider, 20);
 		}
@@ -180,7 +179,7 @@ void GridManager::DetatchFromGrid(Collider* pCollider, int pGridX, int pGridY, g
 	}
 	else {
 		if (pGridX == 2 && pGridY == 0) {
-			// ERROR IS OCCURING: This means that the Y cell needs to be decreased by 1
+			// EDGE CASE: This means that the Y cell needs to be decreased by 1
 			// The 20 stands for X grid = 2, Y grid = 0
 			grids_[pGridX]->Detatch(pCollider, pPos.x, pPos.y, 20);
 		}
@@ -191,15 +190,15 @@ void GridManager::DetatchFromGrid(Collider* pCollider, int pGridX, int pGridY, g
 
 }
 
-int GridManager::GetTestCount() {
+int GridManager::GetTestCount() const {
 	return collisionTestCount;
 }
-int GridManager::GetCollisionCount() {
+int GridManager::GetCollisionCount() const {
 	return numberOfCollisions;
 }
 
 
-int GridManager::GetChosenGrid(float pPosition) {
+int GridManager::GetChosenGrid(float pPosition) const {
 	// Gets the local position in a cell, multiplies by 3 (because of 3 grids)
 	float remainder30 = (float)((int)(pPosition * 3) % (int)(config::GRID_CELL_SIZE * 3));
 
@@ -208,6 +207,6 @@ int GridManager::GetChosenGrid(float pPosition) {
 
 }
 
-bool GridManager::IsTripleGrid() {
+bool GridManager::IsTripleGrid() const {
 	return (config::GRID_TRIPLE && config::USE_SPATIALPARTITIONING);
 }

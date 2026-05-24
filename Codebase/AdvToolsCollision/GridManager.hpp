@@ -5,7 +5,6 @@
 #include "Collider.hpp"
 #include "mge/materials/ColorMaterial.hpp"
 #include "Grid.hpp"
-//#include "MoveBehaviour.hpp"
 
 class Collider;
 class Grid;
@@ -28,36 +27,25 @@ public:
 	// Insert the cell coordinates here
 	void handleCell(int pX, int pY, int pGridNr);
 
-	// Assumes that pCollider is valid
-	//void handleCollider(Collider* pCollider, Collider* pOther);
-
-	//void ResetColors();
-
-	//virtual void update(float pStep);
 	virtual void update(float pStep);
 
-	int GetTestCount();
-	int GetCollisionCount();
+	int GetTestCount() const;
+	int GetCollisionCount() const;
 
 private:
 
-	//Grid* grids_[config::GRID_TRIPLE ? 3 : 1];
 
 	std::vector<Grid*> grids_;
 
 	void AddToGrid(Collider* pCollider, int pGridX, int pGridY);
 	void DetatchFromGrid(Collider* pCollider, int pGridX, int pGridY, glm::vec2 pPos);
-	int GetChosenGrid(float pPosition);
-	bool IsTripleGrid();
+	int GetChosenGrid(float pPosition) const;
+	bool IsTripleGrid() const;
 
 
-	//Collider* cells_[config::GRID_CELL_COUNT][config::GRID_CELL_COUNT];
 
 	int collisionTestCount = 0;
 	int numberOfCollisions = 0;
-
-	AbstractMaterial* redMaterialNoCol = new ColorMaterial(glm::vec3(1, 0, 0));
-	AbstractMaterial* greenMaterialYesCol = new ColorMaterial(glm::vec3(0, 1, 0));
 
 };
 

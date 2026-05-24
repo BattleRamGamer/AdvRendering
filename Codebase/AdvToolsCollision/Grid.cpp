@@ -195,6 +195,6 @@ int Grid::GetCollisionCount() {
 	return colCount;
 }
 
-int Grid::GetCellPos(float pPos) {
+int Grid::GetCellPos(float pPos) const {
 	return (int)(pPos / config::GRID_CELL_SIZE);
 }

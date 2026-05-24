@@ -31,6 +31,7 @@ int CollisionManager::checkCollisions() {
 		total = checkCollisionsIgnoreHistory();
 	}
 
+	collisionAmount = total;
 
 	return total;
 }
@@ -39,18 +40,14 @@ int CollisionManager::checkCollisionsUnoptimized() {
 	int total = 0;
 	for (int i = 0; i < _colliders.size(); i++) {
 		// If no collisions, this will stay until the end
-		//_colliders[i]->setMaterial(redMaterial);
 		_colliders[i]->isColliding = false;
-		//_colliders[i]->ReloadMaterial();
 
 		for (int j = 0; j < _colliders.size(); j++) {
 			if (i != j) {
 				testAmount++;
 				if (_colliders[i]->checkCollision(_colliders[j])) {
 					total++;
-					//_colliders[i]->setMaterial(mats[_colliders[i].colTotal]); or 
 					// If there's a collision, set to appropiate colour
-					//_colliders[i]->setMaterial(greenMaterial);
 					_colliders[i]->isColliding = true;
 				}
 			}
@@ -58,13 +55,14 @@ int CollisionManager::checkCollisionsUnoptimized() {
 		_colliders[i]->ReloadMaterial();
 	}
 
-	return total;
+	// Take half, since both colliders involved increase the total by 1
+	// Similar to a straw seen from a topological perspective: There are two entrances, but only one hole
+	return total * .5f;
 }
 
 int CollisionManager::checkCollisionsIgnoreHistory() {
 	for (int i = 0; i < _colliders.size(); i++) {
 		// If no collisions, this will stay until the end
-		//_colliders[i]->setMaterial(redMaterial);
 		_colliders[i]->isColliding = false;
 	}
 
@@ -79,18 +77,14 @@ int CollisionManager::checkCollisionsIgnoreHistory() {
 					// If there's a collision, set to appropiate colour
 					
 					//independentCollisionCheck(i, j);
-					
 					_colliders[i]->isColliding = true;
 					_colliders[j]->isColliding = true;
 					
-					//_colliders[i]->setMaterial(greenMaterial);
-					//_colliders[j]->setMaterial(greenMaterial);
 				}
 			}
 		}
 		_colliders[i]->ReloadMaterial();
 	}
-	//printf("Finished a round");
 
 	return total;
 }
@@ -124,4 +118,7 @@ void CollisionManager::independentCollisionCheck(int pI, int pJ) {
 
 int CollisionManager::getTestAmount() {
 	return testAmount;
+}
+int CollisionManager::getCollisionAmount() {
+	return collisionAmount;
 }

@@ -40,7 +40,9 @@ void MoveBehaviour::update(float pStep)
 
 	_estimatedPosition += _moveDirection * _moveSpeed;
 
-	_gridManager->CheckMovement((Collider*)_owner, oldPos, _estimatedPosition);
+	if (config::USE_SPATIALPARTITIONING) {
+		_gridManager->CheckMovement((Collider*)_owner, oldPos, _estimatedPosition);
+	}
 
 
 

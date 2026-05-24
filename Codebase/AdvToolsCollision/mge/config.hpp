@@ -12,8 +12,8 @@ namespace config {
     const std::string MGE_FONT_PATH ("./mge/fonts/");
 
 
-    const int AABB_COLLIDER_AMOUNT(100);
-    const int CIRCLE_COLLIDER_AMOUNT(100);
+    const int AABB_COLLIDER_AMOUNT(250);
+    const int CIRCLE_COLLIDER_AMOUNT(250);
 
     // Ignore collision checks that already happened (Irrelevant if spatial partitioning is used)
     const bool USE_IGNOREHISTORY(true);
@@ -31,15 +31,15 @@ namespace config {
     // If triple grid, Boundary Size should be (Cell Count - 1) * Cell Size
     const float BOUNDARY_SIZE(40.0f);
     // Since the colliders are 2 big, the lowest this should go is 6
-    const float GRID_CELL_SIZE(6.0f);
+    const float GRID_CELL_SIZE(3.0f);
     // (Cell count - 1) * Cell size should be bigger than the boundary size
-    const int GRID_CELL_COUNT(8);
+    const int GRID_CELL_COUNT(15);
 
 
     // Time in seconds to test for
     const int TEST_TIME(10);
     // Number of frames to test
-    const int TEST_FRAME_COUNT(36000);
+    const int TEST_FRAME_COUNT(1000);
     // Test for a set amount of: True = Time, False = Frames. I'll use frames, so this should be false
     const bool USE_TEST_METHOD_TIME(false);
 

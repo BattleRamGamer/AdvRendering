@@ -37,7 +37,7 @@ public:
 	int GetCollisionCount();
 
 private:
-	int GetCellPos(float pPos);
+	int GetCellPos(float pPos) const;
 
 	Collider* cells_[config::GRID_CELL_COUNT][config::GRID_CELL_COUNT];
 
@@ -49,8 +49,6 @@ private:
 	// Memory gap filling
 	int fillGap0 = 0;
 
-	//ColorMaterial* redMaterialNoCol = new ColorMaterial(glm::vec3(1, 0, 0));
-	//ColorMaterial* greenMaterialYesCol = new ColorMaterial(glm::vec3(0, 1, 0));
 
 };
 

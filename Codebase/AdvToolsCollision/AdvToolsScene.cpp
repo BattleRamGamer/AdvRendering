@@ -49,11 +49,6 @@ void AdvToolsScene::initialize() {
 void AdvToolsScene::_initializeScene()
 {
 
-    _gridManager = new GridManager();
-
-
-    _collisionManager = new CollisionManager();
-    _dataTracker = new DataTracker();
     //MESHES
 
     //load a bunch of meshes we will be using throughout this demo
@@ -76,7 +71,16 @@ void AdvToolsScene::_initializeScene()
     _world->setMainCamera(camera);
 
 
-    _world->add(_gridManager);
+    _dataTracker = new DataTracker();
+
+    if (config::USE_SPATIALPARTITIONING) {
+        _gridManager = new GridManager();
+        _world->add(_gridManager);
+    }
+    else {
+        _collisionManager = new CollisionManager();
+    }
+
 
 
     for (int i = 0; i < config::CIRCLE_COLLIDER_AMOUNT; i++) {
@@ -90,9 +94,14 @@ void AdvToolsScene::_initializeScene()
         collider->setMesh(discMesh);
         collider->setMaterial(new ColorMaterial(glm::vec3(1, 0, 1)));
         _world->add(collider);
-        _collisionManager->addCollider(collider);
 
-        _gridManager->Add(collider);
+        if (config::USE_SPATIALPARTITIONING) {
+            _gridManager->Add(collider);
+        }
+        else {
+            _collisionManager->addCollider(collider);
+        }
+
 
     }
 
@@ -107,10 +116,13 @@ void AdvToolsScene::_initializeScene()
         collider->setMesh(planeMeshDefault);
         collider->setMaterial(new ColorMaterial(glm::vec3(1, 0, 1)));
         _world->add(collider);
-        _collisionManager->addCollider(collider);
 
-        _gridManager->Add(collider);
-
+        if (config::USE_SPATIALPARTITIONING) {
+            _gridManager->Add(collider);
+        }
+        else {
+            _collisionManager->addCollider(collider);
+        }
     }
 
 }
@@ -120,14 +132,10 @@ void AdvToolsScene::_update(float pStep) {
 }
 
 void AdvToolsScene::_render() {
-    /**
-    if (config::USE_SPATIALPARTITIONING) {
-        //_gridManager->handleCollisions();
+    if (!config::USE_SPATIALPARTITIONING) {
+        _collisionManager->checkCollisions();
     }
-    else {
-        //_collisionManager->checkCollisions();
-    }
-    /**/
+
     AbstractGame::_render();
     _updateHud();
 }
@@ -144,7 +152,8 @@ void AdvToolsScene::_updateHud() {
 
     }
     else {
-        colCount = _collisionManager->checkCollisions();
+        //colCount = _collisionManager->checkCollisions();
+        colCount = _collisionManager->getCollisionAmount();
         testCount = _collisionManager->getTestAmount();
     }
 
@@ -171,7 +180,7 @@ void AdvToolsScene::_updateHud() {
 
         _dataTracker->StoreFrameData(
             _frameCount,
-            clockTimer.restart().asSeconds(), 
+            clockTimer.restart().asMilliseconds(), 
             fp_ms.count(),
             testCount, 
             colCount);

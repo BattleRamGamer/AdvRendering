@@ -20,16 +20,11 @@ DataTracker::DataTracker() {
         + "-" + std::to_string(config::GRID_CELL_COUNT);
     
 
-    // Add cell size and stuff?
 
-
-    //_constantData = std::string config::AABB_COLLIDER_AMOUNT;
-    // 
-    // set seed
+    // Setting seed, NOT NECESSARY! Seed is always the same if you don't specify to randomize seed
     //srand(0);
     
-    //seed = 0;
-    //printf("%s;%d",_fileName.c_str(), rand()%15);
+
 }
 
 DataTracker::~DataTracker() {
@@ -49,22 +44,16 @@ void DataTracker::WriteDataToFile() {
     std::ofstream myfile;
 
     // Writing to fileName. Use std::ios::app to append the new results, ::out to override previous results
-    myfile.open("../../Raw results/" + _fileName + ".csv", std::ios::out);
+    myfile.open("../../Raw results/" + _fileName + ".csv", std::ios::app);
 
-    myfile << "Frame time,Elapsed time,Checks performed,Collisions happening\n";
+    myfile << "Frame count,Frame time(ms),Elapsed time(s),Checks performed,Collisions happening\n";
 
     for (int i = 0; i < _data.size(); i++) {
 
         // Add to new row: frame data and make the next one look at the next line
         myfile << _data[i] + "\n ";
     }
-    /**
-    myfile << "This is the first cell in the first column.\n";
-    myfile << "a,b,c,\n";
-    myfile << "c,s,v,\n";
-    myfile << "1,2,3.456\n";
-    myfile << "semi;colon";
-    /**/
+
     myfile.close();
 }
 
